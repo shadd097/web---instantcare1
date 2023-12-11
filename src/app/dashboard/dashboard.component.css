@@ -1,0 +1,57 @@
+.dashboard-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.appointment-info {
+  margin-bottom: 20px;
+}
+
+.business-requirements {
+  /* width: 75%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.requirement {
+  width: 250px;
+  height: 250px; /* Adjusted height of the boxes */
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: bold !important; /* Ensuring bold font */
+  color: #333 !important; /* Darker font color */
+  font-family: 'Arial', sans-serif !important; /* Modified font family */
+  font-size: 28px !important; /* Increased font size */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bigger-box {
+  width: 100%;
+}
+
+.red-rectangle {
+  background-color: #ff6666;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.orange-square {
+  background-color: #ff9900;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
