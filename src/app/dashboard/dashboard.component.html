@@ -2,8 +2,42 @@
   <h1>Hello {{ userName }}!</h1>
 
   <div class="appointment-info">
-    <p>Your next appointment is on:</p>
-    <p></p>
+    <div *ngIf="nextAppointment">
+      <p>Your next appointment is on:</p>
+      <div style="display:flex">
+        <p style="margin-right: 10px; margin-top:10px;">{{ formatNiceDate(nextAppointment?.date) }} for a {{ nextAppointment?.type }}</p>
+        <button mat-icon-button (click)="deleteAppointment(nextAppointment)" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <br>
+
+    <div *ngIf="laterAppointments?.length">
+      <p>Your later appointments are on:</p>
+      <div *ngFor="let appointment of laterAppointments">
+        <div style="display:flex">
+          <p style="margin-right: 10px; margin-top:10px;">{{ formatNiceDate(nextAppointment?.date) }} for a {{ nextAppointment?.type }}</p>
+          <button mat-icon-button (click)="deleteAppointment(appointment)" >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>      </div>
+    </div>
+
+    <br>
+
+    <div *ngIf="olderAppointments?.length">
+      <p>Your older appointments are on:</p>
+      <div *ngFor="let appointment of olderAppointments">
+        <div style="display:flex">
+          <p style="margin-right: 10px; margin-top:10px;">{{ formatNiceDate(nextAppointment?.date) }} for a {{ nextAppointment?.type }}</p>
+          <button mat-icon-button (click)="deleteAppointment(appointment)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="business-requirements">
@@ -11,7 +45,7 @@
       <div (click)="navigateToNewPage()" class="requirement red-rectangle bigger-width">
         <h3>Create Booking</h3>
       </div>
-      <div class="requirement orange-square bigger-width">
+      <div (click)="navigateToInsurance()" class="requirement orange-square bigger-width">
         <h3>Manage Insurance</h3>
       </div>
     </div>
