@@ -30,6 +30,8 @@ export class DashboardComponent implements OnInit {
         this.nextAppointment = this.getNextAppointment(res);
         this.laterAppointments = this.getLaterAppointments(res);
         this.olderAppointments = this.getOlderAppointments(res);
+        console.log(this.laterAppointments);
+        console.log(this.olderAppointments);
       },
       error: (error) => {
         alert('Error occurred while uploading avatar');
@@ -79,7 +81,7 @@ export class DashboardComponent implements OnInit {
       const appointmentDate = new Date(appointment.date);
       appointmentDate.setHours(0, 0, 0, 0); // Set appointment time to midnight
 
-      return appointmentDate > currentDate;
+      return appointmentDate > currentDate && appointment._id !== this.nextAppointment._id;
     });
   }
 
@@ -91,7 +93,7 @@ export class DashboardComponent implements OnInit {
       const appointmentDate = new Date(appointment.date);
       appointmentDate.setHours(0, 0, 0, 0); // Set appointment time to midnight
 
-      return appointmentDate < currentDate;
+      return appointmentDate <= currentDate && appointment._id !== this.nextAppointment._id;
     });
   }
 
