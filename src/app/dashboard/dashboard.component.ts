@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   getAppointments() {
     this.http.get(`${environment.baseURL}/getAppointments`).subscribe({
       next: (res) => {
+        console.log(res);
         this.nextAppointment = this.getNextAppointment(res);
         this.laterAppointments = this.getLaterAppointments(res);
         this.olderAppointments = this.getOlderAppointments(res);
@@ -81,7 +82,7 @@ export class DashboardComponent implements OnInit {
       const appointmentDate = new Date(appointment.date);
       appointmentDate.setHours(0, 0, 0, 0); // Set appointment time to midnight
 
-      return appointmentDate > currentDate && appointment._id !== this.nextAppointment._id;
+      return appointmentDate > currentDate && appointment._id !== this.nextAppointment?._id;
     });
   }
 
@@ -93,7 +94,7 @@ export class DashboardComponent implements OnInit {
       const appointmentDate = new Date(appointment.date);
       appointmentDate.setHours(0, 0, 0, 0); // Set appointment time to midnight
 
-      return appointmentDate <= currentDate && appointment._id !== this.nextAppointment._id;
+      return appointmentDate <= currentDate && appointment._id !== this.nextAppointment?._id;
     });
   }
 
